@@ -1,6 +1,6 @@
 # Chess Movement Heatmap Generator
 
-A Python tool that generates movement heatmaps for various chess pieces from different chess variants including standard chess, fairy chess, Xiangqi (Chinese Chess), and Shogi (Japanese Chess).
+A Python tool that generates movement heatmaps for various chess pieces from different chess variants including standard chess, fairy chess, Xiangqi (Chinese Chess), and Shogi (Japanese Chess). Currently supports **183 different piece types** from various historical and modern chess variants.
 
 ## Overview
 
@@ -39,6 +39,8 @@ print_heatmap_with_obstacles(heatmap)
 
 ## Implemented Pieces
 
+This tool implements **183 different chess pieces** from various chess variants throughout history and from different cultures. Below are some examples from each category. For a complete list of all pieces, see [`fairy_chess_pieces.py`](fairy_chess_pieces.py) and [`exotic_pieces.py`](exotic_pieces.py), or use the CLI with `--list` command.
+
 ### Standard Chess Pieces
 
 | Piece | Movement Pattern |
@@ -66,6 +68,14 @@ print_heatmap_with_obstacles(heatmap)
 | **Archbishop** | Bishop + Knight | Combines bishop and knight moves |
 | **Chancellor** | Rook + Knight | Combines rook and knight moves |
 | **Grasshopper** | Hopper | Jumps over pieces (simplified as 2+ square jumps) |
+
+...and many more exotic pieces including:
+- **Chu Shogi pieces**: Lion, Kirin, Phoenix, Drunk Elephant, Flying Ox, etc.
+- **Taikyoku Shogi pieces**: Emperor, Teaching King, Buddhist Spirit, Heavenly Horse, etc.
+- **Grant Acedrex pieces**: Unicorno, Rhinoceros, Gryphon, etc.
+- **Modern variants**: Rose, Nightrider variants, compound leapers, etc.
+
+For the complete list of 156+ fairy chess pieces, see [`fairy_chess_pieces.py`](fairy_chess_pieces.py).
 
 ### Xiangqi (Chinese Chess) Pieces
 
@@ -112,8 +122,13 @@ rook = [(i, 0) for i in range(-7, 8) if i != 0] + [(0, i) for i in range(-7, 8) 
 
 - `heatmap.py`: Core heatmap generation functions
 - `heatmap_with_obstacles.py`: Enhanced version with obstacle support and pathfinding
-- `exotic_pieces.py`: Collection of pieces from various chess variants
+- `exotic_pieces.py`: Collection of 27 pieces from various chess variants
+- `fairy_chess_pieces.py`: Comprehensive collection of 156 fairy chess pieces
+- `chess_heatmap_cli.py`: Command-line interface for easy interaction
 - `test_heatmap.py`: Unit tests and visual demonstrations
+- `test_fairy_pieces.py`: Test suite for fairy chess pieces
+- `verify_all_pieces.py`: Verification script to check all piece implementations
+- `demo.py`: Interactive demonstration of various pieces
 - `example.py`: Simple usage example
 
 ## Features
@@ -123,7 +138,7 @@ rook = [(i, 0) for i in range(-7, 8) if i != 0] + [(0, i) for i in range(-7, 8) 
 - Obstacle handling
 - Path reconstruction
 - Visual heatmap display
-- Pieces from multiple chess variants
+- 183 pieces from multiple chess variants worldwide
 
 ## Requirements
 
@@ -165,7 +180,7 @@ python chess_heatmap_cli.py --search dragon
 python chess_heatmap_cli.py --search general
 
 # Get detailed information about a piece
-python chess_heatmap_cli.py "flying ox" --info
+python chess_heatmap_cli.py flying-ox --info
 ```
 
 ### Advanced Options
@@ -178,13 +193,13 @@ python chess_heatmap_cli.py knight --width 4
 python chess_heatmap_cli.py pawn --no-legend
 
 # Complex example with multiple options
-python chess_heatmap_cli.py "drunk elephant" --size 12 --position 6,6 --obstacles "5,6;7,6" --width 2
+python chess_heatmap_cli.py drunk-elephant --size 12 --position 6,6 --obstacles "5,6;7,6" --width 2
 ```
 
 ### Available Options
 
 - `piece`: Name of the chess piece (required unless using --list or --search)
-- `-s, --size SIZE`: Board size (default: 8)
+- `-s, --size SIZE`: Board size as 'N' or 'NxM' (default: 8)
 - `-p, --position POSITION`: Starting position as 'e4' or '4,4' (default: center)
 - `-o, --obstacles OBSTACLES`: Obstacle positions separated by semicolons
 - `-w, --width WIDTH`: Cell width for display (default: 3)
