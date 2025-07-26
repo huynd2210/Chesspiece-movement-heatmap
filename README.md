@@ -155,4 +155,4 @@ python chess_heatmap_cli.py drunk-elephant --size 12 --position 6,6 --obstacles 
 
 ## License
 
-This project is open source and available for educational and personal use.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
